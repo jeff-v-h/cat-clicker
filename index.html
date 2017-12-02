@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cat Clicker</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>
+		<h1>Cat Clicker</h1>
+	</header>
+	<div id="content">
+		<div id="cat-container">
+			<div id="cat-div-wrapper">
+				<div id="cat-div">
+					<h3 id="name"></h3>
+					<img src="" id="img" alt="cute cat">
+					<p id="clicks"></p>
+				</div>
+			</div>
+			<div id="update-container-wrapper">
+				<div id="update-container">
+					<button id="admin-btn">Admin</button>
+					<form id="input-container">
+						<div>
+							<label for="name-input">Name: </label>
+							<input type="text" name="name-input" id="name-input"><br>
+							<label for="url-input">Img URL: </label>
+							<input type="text" name="url" id="url-input"><br>
+							<label for="clicks-input"># of Clicks: </label>
+							<input type="text" name="clicks-input" id="clicks-input"><br>
+						</div>
+						<button type="button" id="save-btn">Save</button>
+						<button type="button" id="cancel-btn">Cancel</button>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+		<div>
+			<ul id="cat-list">
+				<!-- Dynamically add DOM
+				<li id="cat-list1">Snowball</li>
+				<li>Simba</li>
+				<li>Ari</li>
+				-->
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

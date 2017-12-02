@@ -1,0 +1,52 @@
+html, body {
+	width: 100%;
+}
+
+header {
+	text-align: center;
+}
+
+#content {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+#cat-container {
+	width: 85%;
+}
+
+#cat-container * {
+	max-width: 100%;
+}
+
+#cat-div-wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+#update-container-wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+img {
+	max-height: 400px;
+}
+
+button {
+	margin: 0px 15px 10px 0;
+}
+
+input {
+	margin-bottom: 5px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	padding-bottom: 1em;
+}
+
