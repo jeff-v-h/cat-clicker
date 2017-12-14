@@ -1,12 +1,24 @@
 var ViewModel = function() {
 	this.clickCount = ko.observable(0);
-	this.name = ko.observable('Snowball');
+	this.name = ko.observable("Snowball");
 	this.imgSrc = ko.observable('img/kitten_1.jpg');
 
 	this.incrementCounter = function() {
 		this.clickCount(this.clickCount() + 1);
 	};
-}
+
+	this.level = ko.computed(function() {
+		if (this.clickCount() < 10) {
+			return "Newborn"
+		} else if (this.clickCount() < 20) {
+			return "Infant";
+		} else if (this.clickCount() < 30) {
+			return "Teen";
+		} else if (this.clickCount() < 40) {
+			return "Adult";
+		};
+	}, this);
+};
 
 ko.applyBindings(new ViewModel());
 
