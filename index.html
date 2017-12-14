@@ -11,10 +11,10 @@
 	<div id="content">
 		<div id="cat-container">
 			<div id="cat-div-wrapper">
-				<div id="cat-div">
-					<h3 id="name"></h3>
-					<img src="" id="img" alt="cute cat">
-					<p id="clicks"></p>
+				<div id="cat-div" >
+					<h3 id="name" data-bind="text: name"></h3>
+					<img src="" id="img" data-bind="click: incrementCounter, attr: {src: imgSrc}" alt="cute cat">
+					<p id="clicks" data-bind="text: clickCount"></p>
 				</div>
 			</div>
 			<div id="update-container-wrapper">
@@ -46,7 +46,7 @@
 			</ul>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/lib/knockout-3.4.2.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
