@@ -12,16 +12,16 @@
 		<div id="cat-container">
 			<div class="wrapper">
 				<div id="cat-div" >
-					<h2 id="name" data-bind="text: name"></h2>
-					<h3 data-bind="text: level"></h3>
-					<img src="" id="img" data-bind="click: incrementCounter, attr: {src: imgSrc}" alt="cute cat">
-					<p id="clicks" data-bind="text: clickCount"></p>
+					<h2 id="name" data-bind="text: currentCat().name"></h2>
+					<h3 data-bind="text: currentCat().level"></h3>
+					<img src="" id="img" data-bind="click: incrementCounter, attr: {src: currentCat().imgSrc}" alt="cute cat">
+					<p id="clicks" data-bind="text: currentCat().clickCount"></p>
 				</div>
 			</div>
 			<div id="info" class="wrapper">
 				<div id="nicknames">
 					<h3>Nicknames:</h3>
-					<ul data-bind="foreach: nicknames">
+					<ul data-bind="foreach: currentCat().nicknames">
 						<li data-bind="text: $data"></li>
 					</ul>
 				</div>

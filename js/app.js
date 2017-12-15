@@ -1,79 +1,52 @@
-var ViewModel = function() {
+initialCats = [
+	{
+		id: 1,
+		name: "Snowball",
+		imgSrc: "img/kitten_1.jpg",
+		clicks: 0,
+		admin: false,
+		nicknames: ["Snowy", "Whitey", "S-Ball", "Ball"]
+	},
+	{
+		id: 2,
+		name: "Simba",
+		imgSrc: "img/kitten_2.jpg",
+		clicks: 0,
+		admin: false,
+		nicknames: ["Lion", "Sim", "Simmy"]
+	},
+	{
+		id: 3,
+		name: "Ari",
+		imgSrc: "img/kitten_3.jpg",
+		clicks: 0,
+		admin: false,
+		nicknames: ["A", "Ri-ri"]
+	},
+	{
+		id: 4,
+		name: "Grumpy",
+		imgSrc: "img/kitten_4.jpg",
+		clicks: 0,
+		admin: false,
+		nicknames: ["Grumps", "Rumps", "G",]
+	},
+	{
+		id: 5,
+		name: "Misty",
+		imgSrc: "img/kitten_5.jpg",
+		clicks: 0,
+		admin: false,
+		nicknames: ["Mist", "M-Ball", "Master", "Fluffy"]
+	}
+];
+
+var Cat = function(data) {
 	var self = this;
-	self.cats = ko.observableArray([
-		{
-			id: 1,
-			name: "Snowball",
-			imgSrc: "img/kitten_1.jpg",
-			clicks: 0,
-			admin: false,
-			nicknames: ["Snowy", "Whitey", "S-Ball", "Ball"]
-		},
-		{
-			id: 2,
-			name: "Simba",
-			imgSrc: "img/kitten_2.jpg",
-			clicks: 0,
-			admin: false,
-			nicknames: ["Lion", "Sim", "Simmy"]
-		},
-		{
-			id: 3,
-			name: "Ari",
-			imgSrc: "img/kitten_3.jpg",
-			clicks: 0,
-			admin: false,
-			nicknames: ["A", "Ri-ri"]
-		},
-		{
-			id: 4,
-			name: "Grumpy",
-			imgSrc: "img/kitten_4.jpg",
-			clicks: 0,
-			admin: false,
-			nicknames: ["Grumps", "Rumps", "G",]
-		},
-		{
-			id: 5,
-			name: "Misty",
-			imgSrc: "img/kitten_5.jpg",
-			clicks: 0,
-			admin: false,
-			nicknames: ["Mist", "M-Ball", "Master", "Fluffy"]
-		}
-	]);
-
-	
-	self.currentCat = ko.observable(self.cats()[0]);
-	
-	self.clickCount = ko.observable(self.currentCat().clicks);
-	self.name = ko.observable(self.currentCat().name);
-	self.imgSrc = ko.observable(self.currentCat().imgSrc);
-	self.nicknames = ko.observable(self.currentCat().nicknames);
-
-	self.incrementCounter = function() {
-		self.clickCount(self.clickCount()+1);
-	};
-	/*
-	self.currentCat = ko.computed(function() {
-		return self.cats()[0];
-	});
-	
-	self.clickCount = ko.computed(function() {
-		return self.currentCat().clicks;
-	});
-	self.name = ko.computed(function() {
-		return self.currentCat().name;
-	});
-	self.imgSrc = ko.computed(function() {
-		return self.currentCat().imgSrc;
-	});
-
-	self.incrementCounter = function() {
-		self.currentCat().clicks++;
-		console.log(self.currentCat().clicks);
-		self.clickCount();
-	}; */
+	self.clickCount = ko.observable(data.clicks);
+	self.name = ko.observable(data.name);
+	self.imgSrc = ko.observable(data.imgSrc);
+	self.nicknames = ko.observable(data.nicknames);
 
 	self.level = ko.computed(function() {
 		if (self.clickCount() < 10) {
@@ -86,6 +59,22 @@ var ViewModel = function() {
 			return "Adult";
 		};
 	});
+}
+
+var ViewModel = function() {
+	var self = this;
+	
+	this.catList = ko.observableArray([]);
+
+	initialCats.forEach(function(catItem) {
+		self.catList.push( new Cat(catItem) );
+	});
+	
+	self.currentCat = ko.observable(self.catList()[0]);
+	
+	self.incrementCounter = function() {
+		self.currentCat().clickCount(self.currentCat().clickCount()+1);
+	};
 };
 
 ko.applyBindings(new ViewModel());
