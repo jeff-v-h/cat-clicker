@@ -9,19 +9,19 @@
 		<h1>Cat Clicker</h1>
 	</header>
 	<div id="content">
-		<div id="cat-container">
+		<div id="cat-container" data-bind="with:currentCat">
 			<div class="wrapper">
 				<div id="cat-div" >
-					<h2 id="name" data-bind="text: currentCat().name"></h2>
-					<h3 data-bind="text: currentCat().level"></h3>
-					<img src="" id="img" data-bind="click: incrementCounter, attr: {src: currentCat().imgSrc}" alt="cute cat">
-					<p id="clicks" data-bind="text: currentCat().clickCount"></p>
+					<h2 id="name" data-bind="text: name"></h2>
+					<h3 data-bind="text: level"></h3>
+					<img src="" id="img" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}" alt="cute cat">
+					<p id="clicks" data-bind="text: clickCount"></p>
 				</div>
 			</div>
 			<div id="info" class="wrapper">
 				<div id="nicknames">
 					<h3>Nicknames:</h3>
-					<ul data-bind="foreach: currentCat().nicknames">
+					<ul data-bind="foreach: nicknames">
 						<li data-bind="text: $data"></li>
 					</ul>
 				</div>
@@ -45,11 +45,6 @@
 		<div>
 			<ul id="cat-list" data-bind="foreach: cats">
 				<li data-bind="text: name"></li>
-				<!-- Dynamically add DOM
-				<li id="cat-list1">Snowball</li>
-				<li>Simba</li>
-				<li>Ari</li>
-				-->
 			</ul>
 		</div>
 	</div>

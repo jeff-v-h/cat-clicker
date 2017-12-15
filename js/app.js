@@ -64,12 +64,12 @@ var Cat = function(data) {
 var ViewModel = function() {
 	var self = this;
 	
-	this.catList = ko.observableArray([]);
+	self.catList = ko.observableArray([]);
 
 	initialCats.forEach(function(catItem) {
 		self.catList.push( new Cat(catItem) );
 	});
-	
+
 	self.currentCat = ko.observable(self.catList()[0]);
 	
 	self.incrementCounter = function() {
