@@ -43,8 +43,8 @@
 			</div> 
 		</div>
 		<div>
-			<ul id="cat-list" data-bind="foreach: cats">
-				<li data-bind="text: name"></li>
+			<ul id="cat-list" data-bind="foreach: catList">
+				<li data-bind="text: name, click: $parent.changeCat"></li>
 			</ul>
 		</div>
 	</div>
