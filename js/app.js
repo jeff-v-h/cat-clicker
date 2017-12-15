@@ -79,79 +79,22 @@ var ViewModel = function() {
 	self.changeCat = function() {
 		self.currentCat(this);
 	};
+
+	self.formVisible = ko.observable(false);
+	self.toggleForm = function() {
+		self.formVisible(!self.formVisible());
+	};
+
+	self.saveForm = function() {
+		self.currentCat().name(this.value);
+		self.currentCat().imgSrc(this.value);
+		self.currentCat().clickCount(this.value);
+	}
 };
 
 ko.applyBindings(new ViewModel());
 
 /*
-$(function() {
-
-	var model = {
-		currentCat: null,
-		cats: [
-			{
-				id: 1,
-				name: "Snowball",
-				imgSrc: "img/kitten_1.jpg",
-				clicks: 0,
-				admin: false
-			},
-			{
-				id: 2,
-				name: "Simba",
-				imgSrc: "img/kitten_2.jpg",
-				clicks: 0,
-				admin: false
-			},
-			{
-				id: 3,
-				name: "Ari",
-				imgSrc: "img/kitten_3.jpg",
-				clicks: 0,
-				admin: false
-			},
-			{
-				id: 4,
-				name: "Grumpy",
-				imgSrc: "img/kitten_4.jpg",
-				clicks: 0,
-				admin: false
-			},
-			{
-				id: 5,
-				name: "Misty",
-				imgSrc: "img/kitten_5.jpg",
-				clicks: 0,
-				admin: false
-			}
-		]
-	};
-
-	var octopus = {
-		init: function() {
-			model.currentCat = model.cats[0];
-			viewMain.init();
-			viewList.init();
-			viewAdmin.init();
-		},
-
-		setCurrentCat: function(cat) {
-			model.currentCat = cat;
-		},
-
-		getCat: function() {
-			return model.currentCat;
-		},
-
-		getAllCats: function() {
-			return model.cats;
-		},
-
-		countClick: function() {
-			model.currentCat.clicks++;
-			viewMain.render();
-		},
-
 		showForm: function() {
 			viewAdmin.$inputForm.css('display', 'block');
 		},
@@ -165,71 +108,7 @@ $(function() {
 			viewAdmin.$urlInput.val(cat.imgSrc);
 			viewAdmin.$clicksInput.val(cat.clicks);
 		}
-	};
-	// each view with own render methods
-	var viewMain = {
-		init: function() {
-			// grab elements and html for using in the render function
-			this.$catContainer = $('#cat-container');
-			this.$catDiv = $('#cat-div');
-			this.$header = $('#name');
-			this.$catImg = $('#img');
-			this.$clicks = $('#clicks');
 
-			// Delegate event to listen for clicks
-			this.$catImg.click(function() {
-				octopus.countClick();
-				var cat = octopus.getCat();
-				octopus.setAdminValues(cat);
-			});
-
-			this.render();
-		},
-
-		render: function() {
-			// render the cat object into the DOM
-			var cat = octopus.getCat();
-			this.$header.text(cat.name);
-			this.$catImg.attr('src', cat.imgSrc);
-			this.$clicks.text('Clicks: ' + cat.clicks);
-		}
-	};
-
-	var viewList = {
-		init: function() {
-			this.catList = $('#cat-list');
-			this.render();
-		},
-
-		render: function() {
-			// get cats to be rendered from octopus
-			var catArray = octopus.getAllCats();
-
-			this.catList.html('');
-
-			// Add cat's names to the side bar using loop
-			for (i=0; i<catArray.length; i++) {
-				var cat = catArray[i];
-
-				var $listItem = $(document.createElement('li'));
-				$listItem.text(cat.name);
-
-				// Closure to add specific cat at the point in time of the loop to each list item
-				$listItem.click((function(cat) {
-					return function() {
-						octopus.setCurrentCat(cat);
-						octopus.setAdminValues(cat);
-
-						viewMain.render();
-						viewAdmin.render();
-					}	
-				})(cat));
-
-				this.catList.append($listItem);
-			}
-
-		}
-	};
 
 	var viewAdmin = {
 		init: function() {

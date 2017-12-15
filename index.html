@@ -26,25 +26,25 @@
 					</ul>
 				</div>
 				<div id="update-container">
-					<button id="admin-btn">Admin</button>
-					<form id="input-container">
+					<button id="admin-btn" data-bind="click: $parent.toggleForm">Admin</button>
+					<form id="input-container" data-bind="visible: $parent.formVisible">
 						<div>
 							<label for="name-input">Name: </label>
-							<input type="text" name="name-input" id="name-input"><br>
+							<input type="text" name="name-input" id="name-input" data-bind="value: name"><br>
 							<label for="url-input">Img URL: </label>
-							<input type="text" name="url" id="url-input"><br>
+							<input type="text" name="url" id="url-input" data-bind="value: imgSrc"><br>
 							<label for="clicks-input"># of Clicks: </label>
-							<input type="text" name="clicks-input" id="clicks-input"><br>
+							<input type="text" name="clicks-input" id="clicks-input" data-bind="value: clickCount"><br>
 						</div>
-						<button type="button" id="save-btn">Save</button>
-						<button type="button" id="cancel-btn">Cancel</button>
+						<button type="button" id="save-btn" data-bind="click $parent.saveForm">Save</button>
+						<button type="button" id="cancel-btn" data-bind="click: $parent.toggleForm">Close</button>
 					</form>
 				</div>
 			</div> 
 		</div>
 		<div>
 			<ul id="cat-list" data-bind="foreach: catList">
-				<li data-bind="text: name, click: $parent.changeCat"></li>
+				<a href=""><li data-bind="text: name, click: $parent.changeCat"></li></a>
 			</ul>
 		</div>
 	</div>
