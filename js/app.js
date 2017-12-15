@@ -1,23 +1,68 @@
 var ViewModel = function() {
-	this.clickCount = ko.observable(0);
-	this.name = ko.observable("Snowball");
-	this.imgSrc = ko.observable('img/kitten_1.jpg');
+	var self = this;
+	self.cats = ko.observableArray([
+		{
+			id: 1,
+			name: "Snowball",
+			imgSrc: "img/kitten_1.jpg",
+			clicks: 0,
+			admin: false,
+			nicknames: ["Snowy", "Whitey", "S-Ball", "Ball"]
+		},
+		{
+			id: 2,
+			name: "Simba",
+			imgSrc: "img/kitten_2.jpg",
+			clicks: 0,
+			admin: false,
+			nicknames: ["Lion", "Sim", "Simmy"]
+		},
+		{
+			id: 3,
+			name: "Ari",
+			imgSrc: "img/kitten_3.jpg",
+			clicks: 0,
+			admin: false,
+			nicknames: ["A", "Ri-ri"]
+		},
+		{
+			id: 4,
+			name: "Grumpy",
+			imgSrc: "img/kitten_4.jpg",
+			clicks: 0,
+			admin: false,
+			nicknames: ["Grumps", "Rumps", "G",]
+		},
+		{
+			id: 5,
+			name: "Misty",
+			imgSrc: "img/kitten_5.jpg",
+			clicks: 0,
+			admin: false,
+			nicknames: ["Mist", "M-Ball", "Master", "Fluffy"]
+		}
+	]);
 
-	this.incrementCounter = function() {
-		this.clickCount(this.clickCount() + 1);
+	self.currentCat = ko.observable(self.cats[0]);
+	self.clickCount = ko.observable(0);
+	self.name = ko.observable("Snowball");
+	self.imgSrc = ko.observable('img/kitten_1.jpg');
+
+	self.incrementCounter = function() {
+		self.clickCount(self.clickCount() + 1);
 	};
 
-	this.level = ko.computed(function() {
-		if (this.clickCount() < 10) {
+	self.level = ko.computed(function() {
+		if (self.clickCount() < 10) {
 			return "Newborn"
-		} else if (this.clickCount() < 20) {
+		} else if (self.clickCount() < 20) {
 			return "Infant";
-		} else if (this.clickCount() < 30) {
+		} else if (self.clickCount() < 30) {
 			return "Teen";
-		} else if (this.clickCount() < 40) {
+		} else if (self.clickCount() < 40) {
 			return "Adult";
 		};
-	}, this);
+	});
 };
 
 ko.applyBindings(new ViewModel());

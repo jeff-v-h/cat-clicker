@@ -18,6 +18,11 @@
 					<p id="clicks" data-bind="text: clickCount"></p>
 				</div>
 			</div>
+			<div>
+				<ul data-bind="">
+					<li data-bind=""></li>
+				</ul>
+			</div> 
 			<div id="update-container-wrapper">
 				<div id="update-container">
 					<button id="admin-btn">Admin</button>
@@ -38,7 +43,8 @@
 			
 		</div>
 		<div>
-			<ul id="cat-list">
+			<ul id="cat-list" data-bind="foreach: cats">
+				<li data-bind="text: name"></li>
 				<!-- Dynamically add DOM
 				<li id="cat-list1">Snowball</li>
 				<li>Simba</li>
