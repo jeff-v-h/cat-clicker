@@ -43,14 +43,37 @@ var ViewModel = function() {
 		}
 	]);
 
-	self.currentCat = ko.observable(self.cats[0]);
-	self.clickCount = ko.observable(0);
-	self.name = ko.observable("Snowball");
-	self.imgSrc = ko.observable('img/kitten_1.jpg');
+	
+	self.currentCat = ko.observable(self.cats()[0]);
+	
+	self.clickCount = ko.observable(self.currentCat().clicks);
+	self.name = ko.observable(self.currentCat().name);
+	self.imgSrc = ko.observable(self.currentCat().imgSrc);
+	self.nicknames = ko.observable(self.currentCat().nicknames);
 
 	self.incrementCounter = function() {
-		self.clickCount(self.clickCount() + 1);
+		self.clickCount(self.clickCount()+1);
 	};
+	/*
+	self.currentCat = ko.computed(function() {
+		return self.cats()[0];
+	});
+	
+	self.clickCount = ko.computed(function() {
+		return self.currentCat().clicks;
+	});
+	self.name = ko.computed(function() {
+		return self.currentCat().name;
+	});
+	self.imgSrc = ko.computed(function() {
+		return self.currentCat().imgSrc;
+	});
+
+	self.incrementCounter = function() {
+		self.currentCat().clicks++;
+		console.log(self.currentCat().clicks);
+		self.clickCount();
+	}; */
 
 	self.level = ko.computed(function() {
 		if (self.clickCount() < 10) {

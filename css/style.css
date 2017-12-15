@@ -20,14 +20,24 @@ header {
 	max-width: 100%;
 }
 
-#cat-div-wrapper {
+.wrapper {
 	display: flex;
 	justify-content: space-around;
 }
 
-#update-container-wrapper {
-	display: flex;
-	justify-content: space-around;
+#info {
+	max-width: 800px;
+	width: 800px;
+	margin: 0 auto;
+}
+
+#nicknames h3 {
+	margin-top: 0;
+	display: inline;
+}
+
+#update-container {
+	margin-top: 5px;
 }
 
 img {

@@ -10,7 +10,7 @@
 	</header>
 	<div id="content">
 		<div id="cat-container">
-			<div id="cat-div-wrapper">
+			<div class="wrapper">
 				<div id="cat-div" >
 					<h2 id="name" data-bind="text: name"></h2>
 					<h3 data-bind="text: level"></h3>
@@ -18,12 +18,13 @@
 					<p id="clicks" data-bind="text: clickCount"></p>
 				</div>
 			</div>
-			<div>
-				<ul data-bind="">
-					<li data-bind=""></li>
-				</ul>
-			</div> 
-			<div id="update-container-wrapper">
+			<div id="info" class="wrapper">
+				<div id="nicknames">
+					<h3>Nicknames:</h3>
+					<ul data-bind="foreach: nicknames">
+						<li data-bind="text: $data"></li>
+					</ul>
+				</div>
 				<div id="update-container">
 					<button id="admin-btn">Admin</button>
 					<form id="input-container">
@@ -39,8 +40,7 @@
 						<button type="button" id="cancel-btn">Cancel</button>
 					</form>
 				</div>
-			</div>
-			
+			</div> 
 		</div>
 		<div>
 			<ul id="cat-list" data-bind="foreach: cats">
